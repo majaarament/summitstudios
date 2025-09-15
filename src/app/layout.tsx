@@ -21,7 +21,7 @@ export default function RootLayout({
           {children}
           <footer className="border-t border-white/10 py-12">
             <div className="container mx-auto px-6 text-sm text-white/60">
-              © {new Date().getFullYear()} Lunaris. All rights reserved.
+              © {new Date().getFullYear()} SummitStudio. All rights reserved.
             </div>
           </footer>
         </SmoothScroll>
