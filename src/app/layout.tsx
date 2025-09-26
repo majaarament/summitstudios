@@ -1,13 +1,14 @@
 // src/app/layout.tsx
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Script from "next/script";
 
-// ✅ add these
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+const SITE_URL = "https://summitstudios.ai";
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || ""; // e.g., G-XXXXXXX
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://summitstudios.ai"),
+  metadataBase: new URL(SITE_URL),
+  applicationName: "Summit Studios",
   title: {
     default: "Summit Studios — amplifying human capabilities",
     template: "%s — Summit Studios",
@@ -22,12 +23,10 @@ export const metadata: Metadata = {
     "workflow automation",
     "sustainability analytics",
   ],
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: "https://summitstudios.ai",
+    url: SITE_URL,
     title: "Summit Studios — amplifying human capabilities",
     description:
       "From one agent to an ecosystem: practical AI that moves metrics.",
@@ -50,15 +49,61 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+      "max-snippet": -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body>
         {children}
-        {/* remove this line if you don't want analytics */}
-        <Analytics />
+
+        {/* Google Analytics (GA4) */}
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}', { anonymize_ip: true });
+              `}
+            </Script>
+          </>
+        )}
+
+        {/* Organization JSON-LD */}
+        <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Summit Studios",
+            url: SITE_URL,
+            logo: `${SITE_URL}/logo.png`,
+            sameAs: [],
+            description:
+              "Summit Studios blends social science and technology to build intelligent agents that turn complex data into clear, measurable action.",
+          })}
+        </Script>
       </body>
     </html>
   );
