@@ -6,7 +6,7 @@ import Header from "../components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lunaris",
+  title: "SummitStudios",
   description: "Minimal, smooth, high-conversion studio site.",
 };
 
@@ -21,7 +21,7 @@ export default function RootLayout({
           {children}
           <footer className="border-t border-white/10 py-12">
             <div className="container mx-auto px-6 text-sm text-white/60">
-              © {new Date().getFullYear()} SummitStudio. All rights reserved.
+              © {new Date().getFullYear()} SummitStudios. All rights reserved.
             </div>
           </footer>
         </SmoothScroll>

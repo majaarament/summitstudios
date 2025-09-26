@@ -9,13 +9,12 @@ export default function Page() {
         <div className="container mx-auto px-6 min-h-[80svh] grid place-items-center text-center">
           <Reveal>
             <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
-              AI products that start with the <span className="text-white/70">right problem</span>.
+              Summit Studios is an AI innovation company blending social science and technology to build intelligent agents that amplify human capabilities.
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-6 max-w-2xl mx-auto text-white/70">
-              We’re computational social scientists who design, analyze, and ship.
-              From problem definition and data analysis to machine learning, automations, and full-stack apps—we build AI that actually moves metrics.
+            <p className="mt-6 max-w-3xl mx-auto text-white/70">
+              We focus on solving real human problems by transforming complex data into clear, measurable actions. Our vision is to move beyond inefficient manual reporting and disconnected systems, replacing them with AI agents that enable smarter, faster, and more sustainable decision‑making.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
@@ -27,7 +26,47 @@ export default function Page() {
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* OVERVIEW */}
+      <section id="overview" className="container mx-auto px-6 py-16 md:py-24">
+        <Reveal>
+          <div className="rounded-2xl border border-white/10 p-6 md:p-8">
+            <p className="text-white/70 max-w-4xl mx-auto">
+              Our platform scales from a single agent to an ecosystem spanning industries like management, sales, marketing, and sustainability.
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* LAUNCH PRODUCT */}
+      <section id="launch" className="container mx-auto px-6 py-24 md:py-32">
+        <Reveal>
+          <h2 className="section-title">Launch product: Eco‑Compliance Agent</h2>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 p-6 h-full">
+              <h3 className="font-medium">What it does</h3>
+              <p className="text-white/60 mt-2 text-sm">
+                Ingests data from diverse sources, interprets environmental impact, uncovers cost‑saving and circular‑economy opportunities, and automates compliance reporting.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 p-6 h-full">
+              <h3 className="font-medium">The result</h3>
+              <p className="text-white/60 mt-2 text-sm">
+                Not just reports, but real impact for people and the planet.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a href="/brief" className="btn-primary">Pilot the Eco‑Compliance Agent</a>
+            <a href="#agents" className="btn-ghost">See other agents</a>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* CAPABILITIES */}
       <section id="services" className="container mx-auto px-6 py-24 md:py-32">
         <Reveal>
           <h2 className="section-title">Capabilities</h2>
@@ -36,27 +75,27 @@ export default function Page() {
           {[
             [
               "Problem Discovery",
-              "Stakeholder interviews, process mapping, and ROI modeling to define the right problem—before we write a line of code."
+              "Stakeholder interviews, process mapping, and ROI modeling to define the right problem before any build."
             ],
             [
               "Data Analysis",
-              "Data audits, cleaning, feature engineering, causal/behavioral insights. Turn raw data into decisions."
+              "Audits, cleaning, feature engineering, and causal/behavioral insights to turn raw data into decisions."
             ],
             [
               "Machine Learning",
-              "Classification, forecasting, clustering, evaluation loops. We pick simple models first—then escalate when it pays off."
+              "Classification, forecasting, clustering, and evaluation loops—simple first, then scale what works."
             ],
             [
               "AI Automations",
-              "Integrate with Slack, Gmail, Notion, HubSpot & your APIs. Agents and workflows that cut busywork and create leverage."
+              "Integrations with Slack, Gmail, Notion, HubSpot, and your APIs to remove busywork and create leverage."
             ],
             [
               "Custom AI Agents",
-              "Retrieval over your knowledge base, tool use, guardrails, analytics. Scoped for safety, cost, and measurable outcomes."
+              "Retrieval over your knowledge base, tool use, guardrails, and analytics—scoped for safety, cost, and outcomes."
             ],
             [
-              "Full-Stack Development",
-              "Design, frontend, backend, dashboards, auth, billing, and deploy. We ship product, not prototypes."
+              "Full‑Stack Development",
+              "Design, frontend, backend, dashboards, auth, billing, and deploy—we ship product, not prototypes."
             ],
           ].map(([title, desc], i) => (
             <Reveal key={title as string} delay={i * 0.05}>
@@ -76,10 +115,10 @@ export default function Page() {
         </Reveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
+            ["Eco‑Compliance Agent", "Automates ESG/CSRD/GRI reporting, flags risks, and highlights circular economy opportunities."],
             ["Inbox Copilot", "Triage, draft, and route with CRM sync."],
             ["Support Analyst", "Instant answers from docs, tickets, and past chats."],
-            ["Market Scanner", "Monitor sources, summarize change, flag risks/opps."],
-            ["Ops Automator", "Move data between tools, update records, nudge owners."],
+            ["Market Scanner", "Monitor sources, summarize change, and flag risks/opportunities."],
           ].map(([name, desc], i) => (
             <Reveal key={name as string} delay={i * 0.05}>
               <article className="group rounded-2xl border border-white/10 p-6 hover:bg-white/5 transition">
@@ -97,17 +136,17 @@ export default function Page() {
         </Reveal>
       </section>
 
-      {/* CASE STUDIES */}
+      {/* OUTCOMES */}
       <section id="work" className="container mx-auto px-6 py-24 md:py-32">
         <Reveal>
           <h2 className="section-title">Selected outcomes</h2>
         </Reveal>
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {[
-            ["Lead Prioritization", "Lifted reply rates by 22% with a data-enriched scoring model and AI-drafted outreach."],
-            ["Ops Automation", "Cut manual processing time by 40% via multi-step approvals and system integrations."],
+            ["Compliance Automation", "Cut reporting prep time by 60% with automated data ingestion and templated filings."],
+            ["Sustainability Insights", "Identified cost‑savings and circular opportunities worth €250k annually across suppliers."],
             ["Support Deflection", "Deployed a RAG assistant trained on docs + tickets; faster answers, higher CSAT."],
-            ["Forecasting", "Weekly demand predictions with clear performance monitoring and human-in-the-loop review."],
+            ["Forecasting", "Weekly demand predictions with clear performance monitoring and human‑in‑the‑loop review."],
           ].map(([name, result], i) => (
             <Reveal key={name as string} delay={i * 0.05}>
               <article className="group rounded-2xl border border-white/10 p-6 hover:bg-white/5 transition">
@@ -128,7 +167,7 @@ export default function Page() {
         <Reveal delay={0.1}>
           <ol className="mt-8 space-y-6">
             {[
-              ["01 — Define", "We align on the problem, users, data, and success metrics. If the ROI isn’t clear, we revise scope."],
+              ["01 — Define", "Align on the problem, users, data, and success metrics. If the ROI isn’t clear, we revise scope."],
               ["02 — Prototype", "A working POC with real data and users. Simple first, then compound wins."],
               ["03 — Ship & Scale", "Harden, integrate, train your team, and monitor. We iterate on measured impact."],
             ].map(([step, desc]) => (
@@ -164,7 +203,7 @@ export default function Page() {
           <div className="rounded-2xl border border-white/10 p-8 md:p-12 text-center">
             <h2 className="text-2xl md:text-3xl font-semibold">Tell us the problem. We’ll scope the win.</h2>
             <p className="text-white/70 mt-3">
-              Share your goal, data sources, and timeline—we’ll respond with an approach and estimate.
+              Share your goal, data sources, and timeline, we’ll respond with an approach and estimate.
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <a href="/brief" className="btn-primary">Start a brief</a>
