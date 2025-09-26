@@ -8,10 +8,15 @@ export default function Page() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(255,255,255,0.08),transparent_70%)]" />
         <div className="container mx-auto px-6 min-h-[80svh] grid place-items-center text-center">
           <Reveal>
-            <div className="mb-6 flex justify-center">
-              <img src="/logo.png" alt="Summit Studios" className="h-18 md:h-16 opacity-90" />
-            </div>
+          <div className="mb-8 flex justify-center">
+            <img
+            src="/logo.png"
+            alt="Summit Studios"
+            className="h-[72px] md:h-[96px] lg:h-[120px] w-auto opacity-90"
+            />
+          </div>
           </Reveal>
+
           <Reveal>
             <h1 className="text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
               Summit Studios, amplifying human capabilities.
