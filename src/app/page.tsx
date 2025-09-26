@@ -9,8 +9,7 @@ export default function Page() {
         <div className="container mx-auto px-6 min-h-[80svh] grid place-items-center text-center">
           <Reveal>
             <div className="mb-6 flex justify-center">
-              {/* Logo: place your file at /public/logo.svg or update src below */}
-              <img src="/logo.png" alt="Summit Studios" className="h-12 md:h-14 opacity-90" />
+              <img src="/logo.png" alt="Summit Studios" className="h-18 md:h-16 opacity-90" />
             </div>
           </Reveal>
           <Reveal>
@@ -37,7 +36,7 @@ export default function Page() {
         <Reveal>
           <div className="rounded-2xl border border-white/10 p-6 md:p-8">
             <p className="text-white/70 max-w-4xl mx-auto">
-              Our platform scales from a single agent to an ecosystem across management, sales, marketing, and sustainability. We focus on adoption, not hype—onboarding and change enablement are built in so agents actually get used.
+              Our platform scales from a single agent to an ecosystem across management, sales, marketing, and sustainability. We focus on adoption, not hype, onboarding and change enablement are built in so agents actually get used.
             </p>
           </div>
         </Reveal>
@@ -101,7 +100,7 @@ export default function Page() {
             ],
             [
               "Machine Learning",
-              "Classification, forecasting, clustering, and evaluation loops—simple first, then scale what works."
+              "Classification, forecasting, clustering, and evaluation loops, simple first, then scale what works."
             ],
             [
               "AI Automations",
@@ -109,11 +108,11 @@ export default function Page() {
             ],
             [
               "Custom AI Agents",
-              "Retrieval over your knowledge base, tool use, guardrails, and analytics—scoped for safety, cost, and outcomes."
+              "Retrieval over your knowledge base, tool use, guardrails, and analytics; scoped for safety, cost, and outcomes."
             ],
             [
               "Full‑Stack Development",
-              "Design, frontend, backend, dashboards, auth, billing, and deploy—we ship product, not prototypes."
+              "Design, frontend, backend, dashboards, auth, billing, and deploy; we ship product, not prototypes."
             ],
           ].map(([title, desc], i) => (
             <Reveal key={title as string} delay={i * 0.05}>
@@ -242,7 +241,7 @@ export default function Page() {
           <div className="rounded-2xl border border-white/10 p-8 md:p-12 text-center">
             <h2 className="text-2xl md:text-3xl font-semibold">Tell us the problem. We’ll scope the win.</h2>
             <p className="text-white/70 mt-3">
-              Share your goal, data sources, and timeline—we’ll respond with an approach and estimate.
+              Share your goal, data sources, and timeline. We’ll respond with an approach and estimate.
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <a href="/brief" className="btn-primary">Start a brief</a>

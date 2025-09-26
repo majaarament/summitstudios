@@ -15,7 +15,7 @@ export default function BriefPage() {
   if (sent) {
     return (
       <main className="container mx-auto px-6 py-24">
-        <h1 className="text-3xl font-semibold">Thanks — we’ll be in touch.</h1>
+        <h1 className="text-3xl font-semibold">Thanks, we’ll be in touch.</h1>
         <p className="text-white/70 mt-4">
           We usually reply within one business day.
         </p>
