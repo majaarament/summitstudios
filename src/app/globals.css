@@ -1,14 +1,196 @@
 @import "tailwindcss";
 
-:root { color-scheme: dark; }
+:root{
+  color-scheme: dark;
 
-/* your small design system */
-@layer components {
-  .btn-primary { @apply inline-flex items-center justify-center rounded-full bg-white text-black px-5 py-2 text-sm font-medium hover:bg-white/90 transition; }
-  .btn-ghost   { @apply inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-2 text-sm hover:bg-white/5 transition; }
-  .input       { @apply w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 outline-none focus:border-white/30 placeholder:text-white/40; }
-  .section-title { @apply text-2xl md:text-3xl font-semibold; }
-  .nav-link    { @apply text-white/70 hover:text-white transition; }
+  --bg: 13 16 24;
+  --fg: 236 240 244;
+  --muted: 168 178 194;
+  --card: 28 33 46;
+  --border: 58 66 84;
+  --brand: 86 156 214;
+
+  /* forest */
+  --eco: 56 189 149;     /* optional glow accent */
+  --forest: 12 29 18;    /* deep green for ground/trees */
+
+  /* height used by tree band + gradient switch */
+  --tree-h: clamp(420px, 60svh, 560px);
+
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+
+  --step--1: clamp(.92rem, .88rem + .2vw, 1rem);
+  --step-0:  clamp(1rem, .95rem + .5vw, 1.125rem);
+  --step-1:  clamp(1.25rem, 1.1rem + 1vw, 1.5rem);
+  --step-2:  clamp(1.6rem, 1.3rem + 2vw, 2.25rem);
+  --step-3:  clamp(2.4rem, 1.8rem + 3vw, 3.2rem);
+  --step-4:  clamp(3rem, 2.2rem + 5vw, 4.5rem);
 }
 
-html { scroll-behavior: auto; }
+/* base */
+@layer base{
+  html{ scroll-behavior: smooth; }
+  :target{ scroll-margin-top: 64px; }
+  body{ background: rgb(var(--bg)); color: rgb(var(--fg)); @apply antialiased; }
+  .container{ @apply max-w-6xl; }
+}
+
+/* components */
+@layer components{
+  .btn-primary{
+    @apply inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-medium transition;
+    background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    border: 1px solid rgba(var(--border), .55);
+    box-shadow: var(--shadow);
+    color: rgb(var(--fg));
+  }
+  .btn-primary:hover{ transform: translateY(-1px); background: rgba(255,255,255,.12); }
+
+  .btn-ghost{
+    @apply inline-flex items-center justify-center rounded-2xl px-5 py-3 text-sm font-medium transition;
+    border: 1px solid rgba(var(--border), .55);
+    background: rgba(255,255,255,.04);
+    color: rgb(var(--fg));
+  }
+  .btn-ghost:hover{ background: rgba(255,255,255,.07); }
+
+  .input{
+    @apply w-full rounded-xl px-4 py-3 outline-none text-sm;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(var(--border), .5);
+  }
+  .input::placeholder{ color: rgba(255,255,255,.4); }
+  .input:focus{ border-color: rgba(var(--border), .8); }
+
+  .section-title{
+    font-size: var(--step-2);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    @apply font-semibold;
+  }
+  .nav-link{ @apply text-white/70 hover:text-white transition; }
+}
+
+/* utilities */
+@layer utilities{
+  .measure{ max-width: 62ch; }
+
+  .glass-card{
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(var(--border), .55);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    backdrop-filter: saturate(120%) blur(8px);
+    position: relative;
+  }
+  .glass-card::before{
+    content:""; position:absolute; inset:0 0 auto 0; height:1px; opacity:.65;
+    background: linear-gradient(90deg, transparent, rgba(var(--brand), .6), transparent);
+    border-top-left-radius: inherit; border-top-right-radius: inherit;
+  }
+
+  .hero-scrim{
+    background:
+      radial-gradient(60% 60% at 50% 0%, rgba(var(--brand), .22), transparent 60%),
+      linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.45) 80%);
+  }
+
+  .seam-dark{
+    height: 80px;
+    background: linear-gradient(180deg, rgba(255,255,255,.06), transparent);
+    -webkit-mask-image: linear-gradient(180deg, black, transparent);
+            mask-image: linear-gradient(180deg, black, transparent);
+  }
+  .seam-ink{
+    height: 80px;
+    background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+    -webkit-mask-image: linear-gradient(180deg, black, transparent);
+            mask-image: linear-gradient(180deg, black, transparent);
+  }
+
+  .tech-grid{ position:relative; isolation:isolate; }
+  .tech-grid::before{
+    content:""; position:absolute; inset:0; z-index:-2;
+    background:
+      radial-gradient(60% 60% at 50% 0%, rgba(var(--brand), .15), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%);
+  }
+  .tech-grid::after{
+    content:""; position:absolute; inset:0; z-index:-1; opacity:.18;
+    background-image:
+      linear-gradient(0deg, transparent 95%, rgba(255,255,255,.22) 96%),
+      linear-gradient(90deg, transparent 95%, rgba(255,255,255,.22) 96%);
+    background-size: 24px 24px;
+    -webkit-mask-image: radial-gradient(70% 70% at 50% 30%, black 55%, transparent 100%);
+            mask-image: radial-gradient(70% 70% at 50% 30%, black 55%, transparent 100%);
+  }
+
+  /* ---------- Forest band background: black sky -> green ground ---------- */
+  .eco-bg{
+    background:
+      linear-gradient(
+        180deg,
+        #000000 0,
+        #000000 var(--tree-h),
+        rgb(var(--forest)) var(--tree-h),
+        rgb(var(--forest)) 100%
+      );
+  }
+
+  /* Tree artwork sits above the gradient; no blending/tinting */
+  .tree-band{
+    position:absolute;
+    inset-inline:0;
+    top:0;
+    height: var(--tree-h);
+    background-image: url('/art/trees-band.png'); /* your transparent PNG */
+    background-repeat: repeat-x;
+    background-size: auto var(--tree-h);
+    background-position: center top;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 1;
+    filter: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    @keyframes mountainFloat{ 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(6px) } }
+    .mountains{ animation: mountainFloat 18s ease-in-out infinite; will-change: transform; }
+  }
+}
+@layer utilities {
+  /* one source of truth for tree height */
+  :root { --tree-h: clamp(300px, 52vw, 580px); }
+
+  /* dark, techy eco backdrop */
+  .eco-bg {
+    background:
+      radial-gradient(70% 50% at 50% 0%, rgba(34 197 94 / .08), transparent 70%),
+      linear-gradient(to bottom, #000 0%, #0a1611 35%, #0c1b14 65%, #0f2017 100%);
+  }
+
+  /* trees band that scales with the variable height */
+  .tree-band {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: var(--tree-h);
+    background-image: url('/art/trees-band.png');
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    background-position: center top;
+    filter: brightness(.9) saturate(.85);
+    pointer-events: none;
+  }
+  /* soft fade into the section background to avoid a hard seam */
+  .tree-band::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 65%, rgba(12,27,20,.92) 100%);
+  }
+
+  /* pad the section by the exact tree height (+ spacing) */
+  .launch-pad { padding-top: calc(var(--tree-h) + 2.5rem); }
+}

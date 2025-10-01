@@ -5,7 +5,6 @@ import Link from "next/link";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-
   const close = () => setOpen(false);
 
   return (
@@ -18,9 +17,11 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex gap-6 text-sm">
+          <Link href="/eco-compliance" className="nav-link">Eco-Compliance</Link>
           <Link href="/#work" className="nav-link">Work</Link>
           <Link href="/#services" className="nav-link">Services</Link>
           <Link href="/#about" className="nav-link">About</Link>
+          <Link href="/#team" className="nav-link">Team</Link>
           <Link href="/#contact" className="nav-link">Contact</Link>
         </nav>
 
@@ -48,9 +49,11 @@ export default function Header() {
           className="md:hidden border-t border-white/10 bg-black/70 backdrop-blur"
         >
           <div className="container mx-auto px-6 py-3 grid gap-3 text-sm">
+            <Link href="/eco-compliance" onClick={close} className="nav-link">Eco-Compliance</Link>
             <Link href="/#work" onClick={close} className="nav-link">Work</Link>
             <Link href="/#services" onClick={close} className="nav-link">Services</Link>
             <Link href="/#about" onClick={close} className="nav-link">About</Link>
+            <Link href="/#team" onClick={close} className="nav-link">Team</Link>
             <Link href="/#contact" onClick={close} className="nav-link">Contact</Link>
             <Link href="/brief" onClick={close} className="btn-ghost w-fit text-xs">Brief</Link>
           </div>

@@ -2,6 +2,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Script from "next/script";
+import Header from "@/components/Header";
 
 const SITE_URL = "https://summitstudios.ai";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID || ""; // e.g., G-XXXXXXX
@@ -70,7 +71,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body>
+      <body className="bg-black text-white antialiased">
+        {/* Global navigation */}
+        <Header />
+
         {children}
 
         {/* Google Analytics (GA4) */}
