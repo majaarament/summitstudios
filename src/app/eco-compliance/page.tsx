@@ -1,4 +1,5 @@
 // src/app/eco-compliance/page.tsx
+import Link from "next/link";
 import Reveal from "../../components/Reveal";
 
 function Donut({ min, max }: { min: number; max: number }) {
@@ -29,29 +30,36 @@ function Donut({ min, max }: { min: number; max: number }) {
 }
 
 export default function EcoCompliancePage() {
+  const howItWorks: [string, string][] = [
+    ["Connect data", "Secure connectors for ERP, IoT, invoices & supplier files. Auto-normalize and version evidence."],
+    ["Scan & map", "Assess against CSRD/ESRS. Identify gaps, hotspots, and data coverage in minutes."],
+    ["Recommend & act", "Generate ROI-ranked actions, owners, and timelines. Automate report sections."],
+    ["Benchmark", "Compare sites & suppliers. Track materiality and trend movements over time."],
+    ["Monitor", "Dashboards, alerts and weekly digests. Human-in-the-loop approvals by default."],
+    ["Audit trail", "Every change is traceable; optional immutable log for regulator-ready evidence."],
+  ];
+
   return (
     <main className="relative min-h-screen overflow-hidden">
-      {/* Full-page green tech backdrop (same as home’s eco section) */}
+      {/* backdrop */}
       <div aria-hidden className="absolute inset-0 -z-10 eco-bg" />
 
       {/* HERO */}
       <section className="container mx-auto px-6 pt-16 md:pt-24 pb-10">
-          <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">Eco-Compliance Agent</h1>
-
-          <p className="text-white/70 mt-3 max-w-2xl">
-            Automate CSRD evidence & reporting, uncover savings, and keep a traceable audit trail. Built for teams that want
-            measurable impact, not just documents.
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#how" className="btn-primary">How it works</a>
-            <a href="#pilot" className="btn-ghost">Pilot details</a>
-            <a href="#security" className="btn-ghost">Security</a>
-          </div>
-
+        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight">Eco-Compliance Agent</h1>
+        <p className="text-white/70 mt-3 max-w-2xl">
+          Automate CSRD evidence & reporting, uncover savings, and keep a traceable audit trail. Built for teams that want
+          measurable impact, not just documents.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3">
+          {/* same-page fragments can stay as <a> */}
+          <a href="#how" className="btn-primary">How it works</a>
+          <a href="#pilot" className="btn-ghost">Pilot details</a>
+          <a href="#security" className="btn-ghost">Security</a>
+        </div>
       </section>
 
-      {/* OUTCOMES SNAPSHOT */}
+      {/* OUTCOMES */}
       <section className="container mx-auto px-6 py-10">
         <div className="grid gap-6 md:grid-cols-3">
           <div className="glass-card p-6 flex items-center gap-4">
@@ -78,22 +86,13 @@ export default function EcoCompliancePage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
+      {/* HOW */}
       <section id="how" className="container mx-auto px-6 py-16 md:py-24">
-        <Reveal>
-          <h2 className="section-title">How it works</h2>
-        </Reveal>
+        <Reveal><h2 className="section-title">How it works</h2></Reveal>
         <Reveal delay={0.05}>
           <ol className="mt-8 grid gap-6 md:grid-cols-3">
-            {[
-              ["Connect data", "Secure connectors for ERP, IoT, invoices & supplier files. Auto-normalize and version evidence."],
-              ["Scan & map", "Assess against CSRD/ESRS. Identify gaps, hotspots, and data coverage in minutes."],
-              ["Recommend & act", "Generate ROI-ranked actions, owners, and timelines. Automate report sections."],
-              ["Benchmark", "Compare sites & suppliers. Track materiality and trend movements over time."],
-              ["Monitor", "Dashboards, alerts and weekly digests. Human-in-the-loop approvals by default."],
-              ["Audit trail", "Every change is traceable; optional immutable log for regulator-ready evidence."],
-            ].map(([title, desc], i) => (
-              <li key={title as string} className="glass-card p-6">
+            {howItWorks.map(([title, desc], i) => (
+              <li key={title} className="glass-card p-6">
                 <div className="size-8 rounded-full border border-white/10 grid place-items-center text-xs mb-3">
                   {String(i + 1).padStart(2, "0")}
                 </div>
@@ -107,9 +106,7 @@ export default function EcoCompliancePage() {
 
       {/* PILOT */}
       <section id="pilot" className="container mx-auto px-6 py-16 md:py-24">
-        <Reveal>
-          <h2 className="section-title">Pilot at a glance</h2>
-        </Reveal>
+        <Reveal><h2 className="section-title">Pilot at a glance</h2></Reveal>
         <Reveal delay={0.05}>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <div className="glass-card p-6 h-full">
@@ -128,16 +125,15 @@ export default function EcoCompliancePage() {
         </Reveal>
         <Reveal delay={0.15}>
           <div className="mt-8">
-            <a href="/brief" className="btn-primary">Get pilot scope</a>
+            {/* INTERNAL route → Link */}
+            <Link href="/brief" className="btn-primary">Get pilot scope</Link>
           </div>
         </Reveal>
       </section>
 
       {/* SECURITY */}
       <section id="security" className="container mx-auto px-6 py-16 md:py-24">
-        <Reveal>
-          <h2 className="section-title">Security & auditability</h2>
-        </Reveal>
+        <Reveal><h2 className="section-title">Security & auditability</h2></Reveal>
         <Reveal delay={0.05}>
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <div className="glass-card p-6 h-full">
@@ -170,9 +166,7 @@ export default function EcoCompliancePage() {
 
       {/* ICP */}
       <section id="fit" className="container mx-auto px-6 py-16 md:py-24">
-        <Reveal>
-          <h2 className="section-title">Who it’s for</h2>
-        </Reveal>
+        <Reveal><h2 className="section-title">Who it’s for</h2></Reveal>
         <Reveal delay={0.05}>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {[
@@ -180,7 +174,7 @@ export default function EcoCompliancePage() {
               ["Ops & sustainability leaders", "Who need reporting done, but also real reductions and ROI-ranked actions."],
               ["IT & compliance teams", "Who want guardrails, auditability, and minimal change-management friction."],
             ].map(([title, desc]) => (
-              <div key={title as string} className="glass-card p-6 h-full">
+              <div key={title} className="glass-card p-6 h-full">
                 <h3 className="font-medium">{title}</h3>
                 <p className="text-white/70 text-sm mt-2">{desc}</p>
               </div>
@@ -196,8 +190,8 @@ export default function EcoCompliancePage() {
             <h2 className="text-2xl md:text-3xl font-semibold">See the agent in action</h2>
             <p className="text-white/70 mt-3">Book a quick demo or send your context—we’ll scope a pilot you can measure.</p>
             <div className="mt-8 flex justify-center gap-4">
-              <a href="/brief" className="btn-primary">Start a brief</a>
-              <a href="/#contact" className="btn-ghost">Contact us</a>
+              <Link href="/brief" className="btn-primary">Start a brief</Link>
+              <Link href="/#contact" className="btn-ghost">Contact us</Link>
             </div>
           </div>
         </Reveal>
