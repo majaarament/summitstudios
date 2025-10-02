@@ -194,3 +194,17 @@
   /* pad the section by the exact tree height (+ spacing) */
   .launch-pad { padding-top: calc(var(--tree-h) + 2.5rem); }
 }
+
+/* smoother glass + no black flash */
+.glass-card {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);          /* pre-promote */
+}
+
+/* src/app/globals.css */
+.glass-card {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
