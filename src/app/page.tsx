@@ -2,6 +2,8 @@
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import Team from "@/components/Team";
+import Chatbot from "../components/Chatbot";
+
 import { ShieldCheck, Inbox, Headset, Radar } from "lucide-react";
 
 const AGENTS = [
@@ -223,7 +225,15 @@ export default function Page() {
             </article>
           ))}
         </div>
+
+      {/* CHATBOT SECTION */}
       </section>
+          <section id="chatbot" className="container mx-auto px-6 py-24 md:py-32">
+            <Reveal>
+              <h2 className="section-title">Chat with our AI Assistant</h2>
+            </Reveal>
+            <Chatbot />
+          </section>
 
       {/* CAPABILITIES */}
       <section id="services" className="container mx-auto px-6 py-24 md:py-32">
